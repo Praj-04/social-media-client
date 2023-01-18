@@ -73,6 +73,7 @@ axiosClient.interceptors.response.use(async (response) => {
   // if access token expired,call refresh api to generate new access code
   if (statusCode === 401 && !originalRequest._retry) {
     // console.log("inside access token regenerate");
+        console.log('the url sent is',`${baseURL}/auth/refresh`)
     originalRequest._retry = true;
     const response = await axios
       .create({
