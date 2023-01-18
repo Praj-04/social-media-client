@@ -76,8 +76,10 @@ axiosClient.interceptors.response.use(async (response) => {
     const response = await axios
       .create({
         withCredentials: true,
-      })
-      .get(`${process.env.REACT_APP_SERVER_BASE_URL}/auth/refresh`);
+      }).get(`${baseURL}/auth/refresh`);
+      // .get(`${process.env.REACT_APP_SERVER_BASE_URL}/auth/refresh`);
+      
+      
 
       //if you get new access token,the server the request
     if (response.data.status === "ok") {
