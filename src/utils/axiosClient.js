@@ -2,7 +2,6 @@ import axios from "axios";
 import store from '../redux/store'
 import { setLoading, showToast } from "../redux/slices/appConfigSlice";
 import { TOAST_FAILURE } from "../App";
-
 import {
   getItem,
   KEY_ACCESS_TOKEN,
@@ -10,8 +9,17 @@ import {
   setItem,
 } from "./localStorageManager";
 
+
+
+//code to choose between development or production
+let baseURL = 'http://localhost:4000/';
+console.log('env is',process.env.NODE_ENV);
+if(process.env.NODE_ENV === 'production'){
+  baseURL = process.env.REACT_APP_SERVER_BASE_URL
+}
+
 export const axiosClient = axios.create({
-  baseURL: process.env.REACT_APP_SERVER_BASE_URL,
+  baseURL,
   withCredentials: true, //send cookies also
 });
 
